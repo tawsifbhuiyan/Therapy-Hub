@@ -1,0 +1,107 @@
+{% extends "navbar.html" %}
+{% block title %}
+Add Hospital Information
+{% endblock title %}
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="container mt-4">
+<div class="display-4 text-center text-info">Add Therapist Data</div>
+<br>
+<div class="row">
+
+    <div class="col-md-4">
+
+        <div class="card">
+            {% include "message.html" %}
+            <h4 class="text-center text-success">Health Care Therapy Center</h4>
+            <div class="card-body bg-light">
+
+                <form action="/addhospitalinfo" method="post">
+                    <Center>Therapist Code : {{current_user.hcode}}</Center>
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-2" name="hcode" 
+                        value="{{current_user.hcode}}"
+                        placeholder="Enter the Therapist Code" required hidden>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-2" name="hname" placeholder="Enter Therapist Name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" class="form-control mt-2" placeholder="Enter Therapist Designation" name="designation" required>
+                        </div>
+
+                    <div class="form-group">
+                        <input type="number" class="form-control mt-2" name="normalbed" placeholder="Behavioral Therapy Available?"  value="" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control mt-2" name="hicubeds" placeholder="Humanistic Therapy Available?" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="number" class="form-control mt-2" name="icubeds" placeholder="Somatic Therapy Available?" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="number" class="form-control mt-2" name="ventbeds" placeholder="Bioenergetic Therapy Available?" required>
+                    </div>
+                 
+                    <br>
+                    <button class="btn btn-info" type="submit">Add</button>
+                    
+
+
+
+                </form>
+
+            </div>
+        </div>
+
+
+    </div>
+
+   
+    <div class="col-md-8">
+        <div class="card mb-3">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="https://source.unsplash.com/600x1000/?medical,hospital" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body bg-dark">
+                  <h5 class="card-title text-center bg-light">Therapist Data</h5>
+                  <div class="card bg-dark" style="width: 28rem;">
+                    <ul class="list-group list-group-flush bg-dark">
+                      <li class="list-group-item">Therapist Code : <b>{{postsdata.hcode}}</b> </li>
+                      <li class="list-group-item">Therapist Name : <b>{{postsdata.hname}}</b></li>
+                      <li class="list-group-item">Behavioral Therapy Available :<b>{{postsdata.normalbed}}</b>  </li>
+                      <li class="list-group-item">Humanistic Therapy Available: <b>{{postsdata.hicubed}}</b> </li>
+                      <li class="list-group-item"> Somatic Therapy Available :<b>{{postsdata.icubed}}</b> </li>
+                      <li class="list-group-item"> Bioenergetic Therapy  Available : <b>{{postsdata.vbed}}</b></li>
+                      <li class="list-group-item"><a href="/hedit/{{postsdata.id}}"><i class="fas fa-edit"></i></a> </i>
+                  
+                          <a class="ml-4" confirm('Are you sure to Delete data'); href="/hdelete/{{postsdata.id}}"><i class="fas fa-trash-alt"></i></a>
+                    </li>
+                     
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+    </div>
+
+</div>
+
+
+</div>
+
+{% endblock body %}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Therapy Prediction</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('static/assets/img/slide/therapy1.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #333; /* Dark gray text color */
+            font-size: 24px;
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 15px;
+            font-size: 26px;
+        }
+
+        input {
+            width: 400px;
+            padding: 15px;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        #resultContainer {
+            margin-top: 20px;
+            background-color: white; /* White background color */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #result {
+            font-size: 32px; /* Larger font size for result */
+        }
+
+        /* Style the recommended therapy text */
+        #result b {
+            font-weight: bold;
+            font-size: 36px; /* Larger font size for recommended therapy text */
+            color: #009688; /* Teal color */
+        }
+    </style>
+</head>
+
+<body>
+    <form id="therapyForm">
+        <h1>Predict Best Therapy</h1>
+        <label for="symptom1">Symptom 1:</label>
+        <input type="text" id="symptom1" name="symptom1"><br>
+        <label for="symptom2">Symptom 2:</label>
+        <input type="text" id="symptom2" name="symptom2"><br>
+        <label for="symptom3">Symptom 3:</label>
+        <input type="text" id="symptom3" name="symptom3"><br>
+        <button type="button" onclick="predictTherapy()">Predict Therapy</button>
+    </form>
+    <div id="resultContainer">
+        <p id="result"></p>
+    </div>
+
+    <script>
+        let therapy = "No specific therapy suggested. Please consult a healthcare provider.";
+
+        function predictTherapy() {
+            const symptom1 = document.getElementById('symptom1').value.toLowerCase();
+            const symptom2 = document.getElementById('symptom2').value.toLowerCase();
+            const symptom3 = document.getElementById('symptom3').value.toLowerCase();
+
+            if (symptom1 === 'depression'||symptom2 === 'depression'||symptom1 === 'depression' 
+            || symptom1 === 'panic'||
+            symptom2 === 'panic'||symptom3 === 'panic'||symptom1 === 'phobia' || symptom2 === 'phobia'
+            ||symptom3 === 'phobia') {
+                therapy = "<b>Recommended Therapy:</b> Behavioral";
+             } 
+                else if (symptom1 === 'anxiety'||symptom2 === 'anxiety'||symptom1 === 'anxiety' 
+            || symptom1 === 'addiction'||
+            symptom2 === 'addiction'||symptom3 === 'addiction'||symptom1 === 'schizophrenia' || symptom2 === 'schizophrenia'
+            ||symptom3 === 'schizophrenia') {
+                therapy = "<b>Recommended Therapy:</b> Humanistic";
+            }
+
+            else if (symptom1 === 'chronic pain'||symptom2 === 'chronic pain'||symptom1 === 'chronic pain' 
+            || symptom1 === 'sleep problem'||
+            symptom2 === 'sleep problem'||symptom3 === 'sleep problem'||symptom1 === 'muscle pain' || symptom2 === 'muscle pain'
+            ||symptom3 === 'muscle pain') {
+                therapy = "<b>Recommended Therapy:</b> Somatic";
+            }
+
+            else if (symptom1 === 'hair loss'||symptom2 === 'hair loss '||symptom1 === 'hair loss' 
+            || symptom1 === 'fatigue'||
+            symptom2 === 'fatigue'||symptom3 === 'fatigue'||symptom1 === 'fatigue' || symptom2 === 'weight loss'
+            ||symptom3 === 'weight loss') {
+                therapy = "<b>Recommended Therapy:</b> Bioenergetic";
+            }
+            
+
+            document.getElementById('result').innerHTML = therapy;
+        }
+    </script>
+</body>
+
+</html>

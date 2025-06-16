@@ -1,0 +1,61 @@
+{% extends 'baselogin.html' %}
+{% block title %} Patient details{% endblock title %}
+{% block form %}
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <br>
+        <br>
+        <h1>Appointment Details</h1>
+        <div class="card p-3">
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Patient username: {{data.srfid}}</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Therapist Code: {{data.hcode}}</th>
+                    </tr>
+                    <!-- <tr>
+                        <th scope="col">Therapy Type: {{data.bedtype}}</th>
+                    </tr>
+                    <tr> -->
+                        <th scope="col">Patient Oxygen Level: {{data.spo2}}</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Patient Name: {{data.pname}}</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Patient Phone: {{data.pphone}}</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Patient Address: {{data.paddress}}</th>
+                    </tr>
+
+                    <tr>
+                        <th scope="col">Appointment Time: {{data.bookingtime}}</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <button id="printButton" onclick="printDetails()" class="btn btn-primary mt-3">Print</button>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+
+<style>
+    @media print {
+        #printButton {
+            display: none;
+        }
+    }
+</style>
+
+<script>
+function printDetails() {
+    window.print();
+}
+</script>
+
+{% endblock form %}

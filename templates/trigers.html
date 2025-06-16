@@ -1,0 +1,49 @@
+{% extends 'baselogin.html' %}
+{% block title %}Triggers{% endblock title %}
+{% block form %}
+<h2>Triggers</h2>
+{% include "message.html" %}
+<div class="d-flex justify-content-center">
+  <div class="container mt-2" style="max-width: 80%;">
+
+    <style>
+      .table th, .table td {
+        padding: 0.3rem;
+        font-size: 0.9rem;
+      }
+      .table h3 {
+        margin-bottom: 0.5rem;
+      }
+    </style>
+
+    <h3 class="text-center text-white bg-dark">Triggered Data</h3>
+    <table class="table table-dark table-bordered table-sm">
+      <thead>
+        <tr>
+          <th scope="col" class="text-center" style="width: 10%;">Hospital Code</th>
+          <th scope="col" class="text-center" style="width: 10%;">Normal Bed</th>
+          <th scope="col" class="text-center" style="width: 10%;">HICU Bed</th>
+          <th scope="col" class="text-center" style="width: 10%;">I.C.U Bed</th>
+          <th scope="col" class="text-center" style="width: 10%;">Ventilator Bed</th>
+          <th scope="col" class="text-center" style="width: 30%;">Action</th>
+          <th scope="col" class="text-center" style="width: 20%;">DATE</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for post in query %}
+        <tr>
+          <td class="text-center">{{post.hcode}}</td>
+          <td class="text-center">{{post.normalbed}}</td>
+          <td class="text-center">{{post.hicubed}}</td>
+          <td class="text-center">{{post.icubed}}</td>
+          <td class="text-center">{{post.vbed}}</td>
+          <td class="text-center">{{post.querys}}</td>
+          <td class="text-center">{{post.date}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  </div>
+</div>
+{% endblock form %}

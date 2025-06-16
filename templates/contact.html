@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>{% block title %}{% endblock title %}</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="static/assets/img/favicon.png" rel="icon">
+  <link href="static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="static/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="static/assets/css/style.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+
+  <!-- ======= Top Bar ======= -->
+  <div id="topbar" class="d-flex align-items-center fixed-top">
+    <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
+      <div class="align-items-center d-none d-md-flex">
+        <i class="bi bi-clock"></i> 24*7 available
+      </div>
+      <div class="d-flex align-items-center">
+        <i class="bi bi-phone"></i> Call us now 01788109909
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <a href="/" class="logo me-auto"><img src="static/assets/img/logo.png" alt=""></a>
+      
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto " href="/">Home</a></li>
+
+          <li><a class="nav-link scrollto" href="/pdetails">Appointment Details</a></li>
+          <li><a class="nav-link scrollto" href="/slotbooking">Available Beds</a></li>
+
+{% if current_user.is_authenticated  and current_user.hcode %}
+
+          <li class="dropdown"><a href="/login"><span>Welcome {{current_user.email}}</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+
+              <li><a href="/addhospitalinfo">Add Hospital Data</a></li>
+              <li><a href="/logout">Logout</a></li>
+      
+           
+            </ul>
+          </li>
+{% elif current_user.is_authenticated and current_user.srfid %}
+           <li class="dropdown"><a href="/login"><span>Welcome {{current_user.email}}</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+
+              <li><a href="/slotbooking">Book Slot</a></li>
+              <li><a href="/logout">Logout</a></li>
+      
+           
+            </ul>
+          </li>
+{% else %}
+          <li class="dropdown"><a href="/login"><span>Sign In</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="/login">User Login</a></li>
+              <li><a href="/hospitallogin">Hospital Login</a></li>
+              <li><a href="/admin">Admin Login</a></li>
+           
+            </ul>
+          </li>
+
+{% endif %}
+          <li><a class="nav-link scrollto" href="/contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <a href="/slotbooking" class="appointment-btn scrollto"><span class="d-none d-md-inline">Bed Booking Slot</span> Book Now</a>
+
+    </div>
+  </header><!-- End Header -->
+
+
+
+  {% block body %}
+
+  <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+        <script type="text/javascript">
+        (function(){
+        emailjs.init("Ql332LQIHsbON3Twq");
+        })();
+    </script>
+
+  <style>
+    *{
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow: hidden;
+    }
+        section{
+            padding: 30px 8%;
+            margin-top: 70px;   
+           
+        }
+        .contact{
+            background: #2E4049;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            align-items: center;
+        }
+
+        .contact-form form input,
+        form textarea{
+            width: 100%;
+            padding: 10px;
+            border: 2px #326c6e solid;
+            outline: none;
+            background: #2E4049;
+            color: #fff;
+            font-size: 13px;
+            margin-bottom: 0.7rem;
+            border-radius: 10px;
+    
+        }
+        .contact-form textarea{
+            resize: none;
+            height: 150px;
+        }
+        .contact-form form .btn{
+            display: inline-block;
+            background: #3FBABF;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            width: 120px;
+            transition: ease 0.5s;
+            cursor: pointer;
+            padding: 10px;
+        }
+        ::placeholder{
+            color: rgba(255, 255, 255, 0.739);
+        }
+        .contact-form form .btn:hover{
+            /* background: transparent; */
+            color: #fff;
+            border: 2px solid #034749;
+        }
+        @media screen and (max-width: 430px) {
+            .contact-form h1{
+                font-size: 40px;
+            
+            }
+            section{
+                margin-top: -100px;
+            }
+        }          
+
+  </style>
+
+
+  <section class="contact" >
+    <div class="contact-form">
+        <form onsubmit="sendMail(); reset(); return false;">
+            <input type="text" placeholder="Name" id="name" required>
+            <input type="email" placeholder="Email" id="email" required>
+            <input type="text" id="number" placeholder="Phone Number" required>
+            <textarea id="msg" name="" id="" cols="30" rows="10" placeholder="Your Message"  required></textarea>
+            <input type="submit"  value="Submit" class="btn">
+        </form>
+    </div>
+</section>
+
+<script>
+    function sendMail() {
+    var fun = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        number: document.getElementById("number").value,
+        message: document.getElementById("msg").value,
+    };
+    const serviceID = "service_5qj84x6";
+    const templateID = "template_tmxqqui";
+
+    emailjs
+        .send(serviceID, templateID, fun)
+        .then((res) => {
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("number").value ="";
+        document.getElementById("msg").value = "";
+        console.log(res);
+        alert("Message sent successfully");
+        })
+        .catch((err) => console.log(err));
+    }
+
+</script>
+
+  {% endblock body %}
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="static/assets/vendor/purecounter/purecounter.js"></script>
+  <script src="static/assets/vendor/aos/aos.js"></script>
+  <script src="static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="static/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="static/assets/js/main.js"></script>
+
+</body>
+
+</html>
