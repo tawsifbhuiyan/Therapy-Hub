@@ -14,7 +14,7 @@ Built with **Python** (backend) and HTML,CSS,JS(frontend), this system ensures o
 ✅ Patient records & reports  
 ✅ Admin dashboard for system control    
 ✅ Session reminders & notifications  
-✅ Clean GUI (or Web Interface if using Flask/Django)  
+✅ Clean GUI 
 ✅ Export reports (PDF/CSV)
 
 ---
