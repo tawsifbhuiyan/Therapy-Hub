@@ -23,7 +23,7 @@ Built with **Python** (backend) and HTML,CSS,JS(frontend), this system ensures o
 
 | Component       | Tech Used                 |
 |----------------|--------------------------- |
-| Backend Logic   | Python                    |
+| Backend Logic   | Django                    |
 | Database        | MySQL                     |
 | Frontend        | HTML,CSS,JS               |
 | Notifications   | `smtplib` / in-app alerts |
